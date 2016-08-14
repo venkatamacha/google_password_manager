@@ -1,0 +1,6 @@
+platform :ios, '7.0'
+use_frameworks!
+target 'google_password_manager' do
+    pod 'GoogleAPIClient/Drive', '~> 1.0.2'
+    pod 'GTMOAuth2', '~> 1.1.0'
+end

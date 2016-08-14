@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A84D7D6592BF12D420358401 /* Pods_google_password_manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D059CDA1415659EBE6E57EA1 /* Pods_google_password_manager.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BE9CC3271D6105B1008A49EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9CC3261D6105B1008A49EF /* AppDelegate.swift */; };
 		BE9CC3291D6105B1008A49EF /* PasswordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9CC3281D6105B1008A49EF /* PasswordsViewController.swift */; };
 		BE9CC32B1D6105B1008A49EF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9CC32A1D6105B1008A49EF /* SettingsViewController.swift */; };
@@ -15,6 +16,8 @@
 		BE9CC3331D6105B1008A49EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE9CC3311D6105B1008A49EF /* LaunchScreen.storyboard */; };
 		BE9CC33E1D6105B1008A49EF /* google_password_managerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9CC33D1D6105B1008A49EF /* google_password_managerTests.swift */; };
 		BE9CC3491D6105B1008A49EF /* google_password_managerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9CC3481D6105B1008A49EF /* google_password_managerUITests.swift */; };
+		BE9CC3571D610A2A008A49EF /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = BE9CC3561D610A2A008A49EF /* Podfile */; };
+		BE9CC3591D610E38008A49EF /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE9CC3581D610E38008A49EF /* GTMOAuth2ViewTouch.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		151C32B26077A190133CAB59 /* Pods-google_password_manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-google_password_manager.release.xcconfig"; path = "Pods/Target Support Files/Pods-google_password_manager/Pods-google_password_manager.release.xcconfig"; sourceTree = "<group>"; };
+		7B11F4CC9F134D9DD3C598D9 /* Pods-google_password_manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-google_password_manager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-google_password_manager/Pods-google_password_manager.debug.xcconfig"; sourceTree = "<group>"; };
 		BE9CC3231D6105B1008A49EF /* google_password_manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = google_password_manager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9CC3261D6105B1008A49EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE9CC3281D6105B1008A49EF /* PasswordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordsViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +54,9 @@
 		BE9CC3441D6105B1008A49EF /* google_password_managerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = google_password_managerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE9CC3481D6105B1008A49EF /* google_password_managerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = google_password_managerUITests.swift; sourceTree = "<group>"; };
 		BE9CC34A1D6105B1008A49EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE9CC3561D610A2A008A49EF /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BE9CC3581D610E38008A49EF /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = Pods/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
+		D059CDA1415659EBE6E57EA1 /* Pods_google_password_manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_google_password_manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A84D7D6592BF12D420358401 /* Pods_google_password_manager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,13 +85,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13A82FA03E004EED524A30B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D059CDA1415659EBE6E57EA1 /* Pods_google_password_manager.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7FC9D4680BBBC09A314A7A3F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7B11F4CC9F134D9DD3C598D9 /* Pods-google_password_manager.debug.xcconfig */,
+				151C32B26077A190133CAB59 /* Pods-google_password_manager.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BE9CC31A1D6105B1008A49EF = {
 			isa = PBXGroup;
 			children = (
+				BE9CC3561D610A2A008A49EF /* Podfile */,
+				BE9CC3581D610E38008A49EF /* GTMOAuth2ViewTouch.xib */,
 				BE9CC3251D6105B1008A49EF /* google_password_manager */,
 				BE9CC33C1D6105B1008A49EF /* google_password_managerTests */,
 				BE9CC3471D6105B1008A49EF /* google_password_managerUITests */,
 				BE9CC3241D6105B1008A49EF /* Products */,
+				7FC9D4680BBBC09A314A7A3F /* Pods */,
+				13A82FA03E004EED524A30B5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,9 +165,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE9CC34D1D6105B1008A49EF /* Build configuration list for PBXNativeTarget "google_password_manager" */;
 			buildPhases = (
+				8A1D0C756AB567D8BBFA36F8 /* Check Pods Manifest.lock */,
 				BE9CC31F1D6105B1008A49EF /* Sources */,
 				BE9CC3201D6105B1008A49EF /* Frameworks */,
 				BE9CC3211D6105B1008A49EF /* Resources */,
+				6D8C5D2E7386A2E6C0AE5A54 /* Embed Pods Frameworks */,
+				55069D4C8608D331CEC4DECC /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,8 +265,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE9CC3591D610E38008A49EF /* GTMOAuth2ViewTouch.xib in Resources */,
 				BE9CC3331D6105B1008A49EF /* LaunchScreen.storyboard in Resources */,
 				BE9CC3301D6105B1008A49EF /* Assets.xcassets in Resources */,
+				BE9CC3571D610A2A008A49EF /* Podfile in Resources */,
 				BE9CC32E1D6105B1008A49EF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +288,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		55069D4C8608D331CEC4DECC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-google_password_manager/Pods-google_password_manager-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D8C5D2E7386A2E6C0AE5A54 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-google_password_manager/Pods-google_password_manager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A1D0C756AB567D8BBFA36F8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BE9CC31F1D6105B1008A49EF /* Sources */ = {
@@ -403,6 +486,7 @@
 		};
 		BE9CC34E1D6105B1008A49EF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B11F4CC9F134D9DD3C598D9 /* Pods-google_password_manager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = google_password_manager/Info.plist;
@@ -414,6 +498,7 @@
 		};
 		BE9CC34F1D6105B1008A49EF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 151C32B26077A190133CAB59 /* Pods-google_password_manager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = google_password_manager/Info.plist;
@@ -488,6 +573,7 @@
 				BE9CC34F1D6105B1008A49EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE9CC3501D6105B1008A49EF /* Build configuration list for PBXNativeTarget "google_password_managerTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +582,7 @@
 				BE9CC3521D6105B1008A49EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE9CC3531D6105B1008A49EF /* Build configuration list for PBXNativeTarget "google_password_managerUITests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +591,7 @@
 				BE9CC3551D6105B1008A49EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
