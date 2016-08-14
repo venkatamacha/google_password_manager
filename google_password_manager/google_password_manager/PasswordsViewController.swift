@@ -15,6 +15,8 @@ class PasswordsViewController: UIViewController {
     private let kKeychainItemName = "Drive API"
     private let kClientID = "741471521408-8m4u1gj5m98o7qiefibvhtt15qsk2oj4.apps.googleusercontent.com"
     
+    var firstTimeViewDidAppearWasCalled: Bool = true
+    
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
     private let scopes = [kGTLAuthScopeDriveMetadataReadonly]
@@ -46,6 +48,15 @@ class PasswordsViewController: UIViewController {
     // When the view appears, ensure that the Drive API service is authorized
     // and perform API calls
     override func viewDidAppear(animated: Bool) {
+        if firstTimeViewDidAppearWasCalled {
+            presentViewController(
+                createAuthController(),
+                animated: true,
+                completion: nil
+            )
+            firstTimeViewDidAppearWasCalled = false
+        }
+        
         if let authorizer = service.authorizer,
             canAuth = authorizer.canAuthorize where canAuth {
             fetchFiles()
