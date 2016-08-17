@@ -10,31 +10,27 @@ import GoogleAPIClient
 import GTMOAuth2
 import UIKit
 
-class PasswordsViewController: UIViewController {
-    
+class PasswordsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var tableView: UITableView!
     private let kKeychainItemName = "Drive API"
     private let kClientID = "741471521408-8m4u1gj5m98o7qiefibvhtt15qsk2oj4.apps.googleusercontent.com"
     
     var firstTimeViewDidAppearWasCalled: Bool = true
+    var userPasswords: [String: [UserPassword]] = [:]
+    
+    var segueRow: Int?
+    var segueSection: Int?
     
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
     private let scopes = [kGTLAuthScopeDriveMetadataReadonly]
     
     private let service = GTLServiceDrive()
-    let output = UITextView()
     
     // When the view loads, create necessary subviews
     // and initialize the Drive API service
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        output.frame = view.bounds
-        output.editable = false
-        output.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        output.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
-        
-        view.addSubview(output);
         
         if let auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName(
             kKeychainItemName,
@@ -42,20 +38,19 @@ class PasswordsViewController: UIViewController {
             clientSecret: nil) {
             service.authorizer = auth
         }
-        
     }
     
     // When the view appears, ensure that the Drive API service is authorized
     // and perform API calls
     override func viewDidAppear(animated: Bool) {
-        if firstTimeViewDidAppearWasCalled {
-            presentViewController(
-                createAuthController(),
-                animated: true,
-                completion: nil
-            )
-            firstTimeViewDidAppearWasCalled = false
-        }
+//        if firstTimeViewDidAppearWasCalled {
+//            presentViewController(
+//                createAuthController(),
+//                animated: true,
+//                completion: nil
+//            )
+//            firstTimeViewDidAppearWasCalled = false
+//        }
         
         if let authorizer = service.authorizer,
             canAuth = authorizer.canAuthorize where canAuth {
@@ -71,7 +66,6 @@ class PasswordsViewController: UIViewController {
     
     // Construct a query to get names and IDs of 10 files using the Google Drive API
     func fetchFiles() {
-        output.text = "Getting files..."
         let query = GTLQueryDrive.queryForFilesList()
         query.pageSize = 10
         query.fields = "nextPageToken, files(id, name)"
@@ -103,7 +97,6 @@ class PasswordsViewController: UIViewController {
             filesString = "No files found."
         }
         
-        output.text = filesString
     }
     
     
@@ -155,6 +148,43 @@ class PasswordsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return userPasswords.count
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userPasswords[Array(userPasswords.keys)[section]]!.count
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1;
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0;
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("PasswordItemCell", forIndexPath: indexPath)
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.textLabel?.text = "Blah"
+        return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier! == "editPassword" {
+            let vc = segue.destinationViewController as! AddPasswordViewController
+            vc.delegate = self
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        segueRow = indexPath.row
+        segueSection = indexPath.section
+        performSegueWithIdentifier("editPassword", sender: nil)
+    }
+    
     
 }
 
