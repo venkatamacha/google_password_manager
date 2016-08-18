@@ -176,6 +176,13 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.identifier! == "editPassword" {
             let vc = segue.destinationViewController as! AddPasswordViewController
             vc.delegate = self
+            vc.editingMode = true
+            vc.previousPassword = userPasswords[Array(userPasswords.keys)[segueSection!]]![segueRow!]
+        } else {
+            let vc = segue.destinationViewController as! AddPasswordViewController
+            vc.delegate = self
+            vc.editingMode = false
+            vc.previousPassword = nil
         }
     }
     

@@ -22,4 +22,36 @@ class UserPassword: NSObject {
         self.pass = pass
         self.notes = notes
     }
+    
+    func textVersion() -> String{
+        return (uuid + "," +
+                service + "," +
+                (user ?? "") + "," +
+                (pass ?? "") + "," +
+                (notes ?? ""))
+    }
+    
+    func deleteSelfFromFile(){
+        let oldText = UserPassword.readFromFile()
+        var userPasswordTexts = oldText.characters.split{$0 == ";"}.map(String.init)
+        userPasswordTexts = userPasswordTexts.filter{!$0.hasPrefix(uuid)}
+        let newText = userPasswordTexts.joinWithSeparator(";")
+        UserPassword.writeIntoFile(newText)
+    }
+    
+    func insertSelfIntoFile(){
+        let oldText = UserPassword.readFromFile()
+        var userPasswordTexts = oldText.characters.split{$0 == ";"}.map(String.init)
+        userPasswordTexts.append(textVersion())
+        let newText = userPasswordTexts.joinWithSeparator(";")
+        UserPassword.writeIntoFile(newText)
+    }
+    
+    static func writeIntoFile(text: String){
+        
+    }
+    
+    static func readFromFile() -> String{
+        return ""
+    }
 }
