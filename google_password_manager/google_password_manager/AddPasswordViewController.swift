@@ -83,7 +83,7 @@ class AddPasswordViewController: UIViewController, UITableViewDelegate, UITableV
         if previousPassword != nil {
             previousPassword!.deleteSelfFromFile()
         }
-        UserPassword.init(service: (service!.text) ?? "Untitled", user: user!.text, pass: pass!.text, notes: notes!.text).insertSelfIntoFile()
+        UserPassword.init(uuid: nil, service: (service!.text) ?? "Untitled", user: user!.text, pass: pass!.text, notes: notes!.text).insertSelfIntoFile()
         self.navigationController!.popViewControllerAnimated(true)
     }
 

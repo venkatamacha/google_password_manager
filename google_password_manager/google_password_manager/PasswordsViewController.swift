@@ -40,6 +40,11 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        userPasswords = UserPassword.generatePasswordDictionary()
+        tableView.reloadData()
+    }
+    
     // When the view appears, ensure that the Drive API service is authorized
     // and perform API calls
     override func viewDidAppear(animated: Bool) {
