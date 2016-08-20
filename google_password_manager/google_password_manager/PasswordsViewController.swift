@@ -159,7 +159,7 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userPasswords[Array(userPasswords.keys)[section]]!.count
+        return userPasswords[Array(userPasswords.keys).sort{$0 < $1}[section]]!.count
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -174,7 +174,7 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("PasswordItemCell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
-        cell.textLabel?.text = userPasswords[Array(userPasswords.keys)[indexPath.section]]![indexPath.row].service
+        cell.textLabel?.text = userPasswords[Array(userPasswords.keys).sort{$0 < $1}[indexPath.section]]![indexPath.row].service
         return cell
     }
     
@@ -182,7 +182,7 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.identifier! == "editPassword" {
             let vc = segue.destinationViewController as! AddPasswordViewController
             vc.delegate = self
-            vc.previousPassword = userPasswords[Array(userPasswords.keys)[segueSection!]]![segueRow!]
+            vc.previousPassword = userPasswords[Array(userPasswords.keys).sort{$0 < $1}[segueSection!]]![segueRow!]
         } else {
             let vc = segue.destinationViewController as! AddPasswordViewController
             vc.delegate = self
