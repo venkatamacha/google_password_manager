@@ -168,7 +168,8 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PasswordItemCell", forIndexPath: indexPath)
         cell.selectionStyle = UITableViewCellSelectionStyle.None
-        cell.textLabel?.text = "Blah"
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        cell.textLabel?.text = userPasswords[Array(userPasswords.keys)[indexPath.section]]![indexPath.row].service
         return cell
     }
     
@@ -176,12 +177,10 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.identifier! == "editPassword" {
             let vc = segue.destinationViewController as! AddPasswordViewController
             vc.delegate = self
-            vc.editingMode = true
             vc.previousPassword = userPasswords[Array(userPasswords.keys)[segueSection!]]![segueRow!]
         } else {
             let vc = segue.destinationViewController as! AddPasswordViewController
             vc.delegate = self
-            vc.editingMode = false
             vc.previousPassword = nil
         }
     }

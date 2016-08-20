@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pcw-cu-1Pl">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -19,24 +19,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="qUS-eW-bfV">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="xeS-Ph-yR6" id="xas-lR-bA1"/>
                                     <outlet property="delegate" destination="xeS-Ph-yR6" id="tcH-wz-wSn"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDv-6H-e5f">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Delete" id="lBX-vE-e4z">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="delete_action:" destination="xeS-Ph-yR6" id="twi-ls-p9Y"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qUS-eW-bfV" firstAttribute="top" secondItem="Z4J-NW-a3J" secondAttribute="top" id="EL0-rQ-z6D"/>
-                            <constraint firstAttribute="bottom" secondItem="qUS-eW-bfV" secondAttribute="bottom" id="En2-9W-uJ6"/>
-                            <constraint firstAttribute="trailing" secondItem="qUS-eW-bfV" secondAttribute="trailing" id="JPs-Jc-5lq"/>
-                            <constraint firstItem="qUS-eW-bfV" firstAttribute="leading" secondItem="Z4J-NW-a3J" secondAttribute="leading" id="bcu-1y-6cO"/>
+                            <constraint firstItem="tDv-6H-e5f" firstAttribute="top" secondItem="qUS-eW-bfV" secondAttribute="bottom" id="BJk-Or-dB0"/>
+                            <constraint firstAttribute="trailing" secondItem="qUS-eW-bfV" secondAttribute="trailing" id="LEz-Ml-Dh6"/>
+                            <constraint firstItem="qUS-eW-bfV" firstAttribute="leading" secondItem="Z4J-NW-a3J" secondAttribute="leading" id="RLx-dO-WGD"/>
+                            <constraint firstItem="qUS-eW-bfV" firstAttribute="trailing" secondItem="tDv-6H-e5f" secondAttribute="trailing" id="RwZ-aF-7k8"/>
+                            <constraint firstItem="tDv-6H-e5f" firstAttribute="bottom" secondItem="ZRP-uQ-MbN" secondAttribute="top" id="TKh-HG-Lmi"/>
+                            <constraint firstItem="qUS-eW-bfV" firstAttribute="top" secondItem="Z4J-NW-a3J" secondAttribute="top" id="oX5-5X-zne"/>
+                            <constraint firstItem="qUS-eW-bfV" firstAttribute="leading" secondItem="tDv-6H-e5f" secondAttribute="leading" id="zMZ-0c-gd7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SSe-XZ-yqt">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="wMS-Rk-08J"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="wMS-Rk-08J">
+                            <connections>
+                                <action selector="save_action:" destination="xeS-Ph-yR6" id="F0g-ca-lem"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="qUS-eW-bfV" id="Mrc-iC-aEO"/>
@@ -44,7 +62,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N8D-bl-Fgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2357" y="-376"/>
+            <point key="canvasLocation" x="2349" y="-368"/>
         </scene>
         <!--Password-->
         <scene sceneID="VeH-NE-3Hh">
@@ -115,65 +133,6 @@
             </objects>
             <point key="canvasLocation" x="1548" y="-376"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="wg7-f3-ORb">
-            <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SettingsViewController" customModule="google_password_manager" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
-                        <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Settings View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5" userLabel="Settings View">
-                                <rect key="frame" x="191" y="279" width="218" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SettingsViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan" userLabel="Loaded by SettingsViewController">
-                                <rect key="frame" x="191" y="329" width="219" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="cPa-gy-q4n"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="750" y="360"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="yl2-sM-qoP">
-            <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
-                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="Pcw-cu-1Pl" kind="relationship" relationship="viewControllers" id="TT9-21-pHW"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="95l-0E-rKK"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
-        </scene>
         <!--Passwords-->
         <scene sceneID="j6r-Yd-bsY">
             <objects>
@@ -196,7 +155,6 @@
     </scenes>
     <resources>
         <image name="passwords" width="30" height="30"/>
-        <image name="settings" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="EDf-t2-gKA"/>

@@ -12,8 +12,13 @@ class AddPasswordViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var tableView: UITableView!
     var delegate: PasswordsViewController?
-    var editingMode: Bool?
     var previousPassword: UserPassword?
+    
+    var service: UITextField?
+    var user: UITextField?
+    var pass: UITextField?
+    var notes: UITextField?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,20 +59,39 @@ class AddPasswordViewController: UIViewController, UITableViewDelegate, UITableV
         switch indexPath.row {
         case 0:
             cell.label.text = "Service:"
+            service = cell.textField
         case 1:
             cell.label.text = "Username:"
+            user = cell.textField
         case 2:
             cell.label.text = "Password:"
+            pass = cell.textField
         case 3:
             cell.label.text = "Notes:"
-            
+            notes = cell.textField
         default:
             break
         }
+
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     }
 
+    @IBAction func save_action(sender: AnyObject) {
+        if previousPassword != nil {
+            previousPassword!.deleteSelfFromFile()
+        }
+        UserPassword.init(service: (service!.text) ?? "Untitled", user: user!.text, pass: pass!.text, notes: notes!.text).insertSelfIntoFile()
+        self.navigationController!.popViewControllerAnimated(true)
+    }
+
+    @IBAction func delete_action(sender: AnyObject) {
+        if previousPassword != nil {
+            previousPassword!.deleteSelfFromFile()
+        }
+        self.navigationController!.popViewControllerAnimated(true)
+    }
+    
 }
