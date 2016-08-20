@@ -21,9 +21,12 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
     var segueRow: Int?
     var segueSection: Int?
     
+    var file: GTLDriveFile?
+    var identifier: String?
+    
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
-    private let scopes = [kGTLAuthScopeDriveMetadataReadonly]
+    private let scopes = [kGTLAuthScopeDrive]
     
     private let service = GTLServiceDrive()
     
@@ -41,21 +44,21 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(animated: Bool) {
-        userPasswords = UserPassword.generatePasswordDictionary()
+        userPasswords = UserPassword.generatePasswordDictionary(self)
         tableView.reloadData()
     }
     
     // When the view appears, ensure that the Drive API service is authorized
     // and perform API calls
     override func viewDidAppear(animated: Bool) {
-//        if firstTimeViewDidAppearWasCalled {
-//            presentViewController(
-//                createAuthController(),
-//                animated: true,
-//                completion: nil
-//            )
-//            firstTimeViewDidAppearWasCalled = false
-//        }
+        if firstTimeViewDidAppearWasCalled {
+            presentViewController(
+                createAuthController(),
+                animated: true,
+                completion: nil
+            )
+            firstTimeViewDidAppearWasCalled = false
+        }
         
         if let authorizer = service.authorizer,
             canAuth = authorizer.canAuthorize where canAuth {
@@ -104,6 +107,71 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+    func writeIntoFile(text: String){
+        if file != nil {
+            let name = "password.txt"
+            let content = text
+            let mimeType = "text/plain"
+            let metadata = GTLDriveFile()
+            metadata.name = name
+            let data = content.dataUsingEncoding(NSUTF8StringEncoding)
+            let uploadParameters = GTLUploadParameters()
+            uploadParameters.data = data
+            uploadParameters.MIMEType = mimeType
+            let query = GTLQueryDrive.queryForFilesUpdateWithObject(file!, fileId: identifier!, uploadParameters: uploadParameters)
+            service.executeQuery(query, completionHandler: {(ticket: GTLServiceTicket!, updatedFile: AnyObject!, error: NSError!) -> Void in
+                if error == nil {
+                    print("File \(updatedFile)")
+                }
+                else {
+                    print("An error occurred: \(error!)")
+                }
+            })
+        } else {
+            let name = "password.txt"
+            let content = text
+            let mimeType = "text/plain"
+            let metadata = GTLDriveFile()
+            metadata.name = name
+            let data = content.dataUsingEncoding(NSUTF8StringEncoding)
+            let uploadParameters = GTLUploadParameters()
+            uploadParameters.data = data
+            uploadParameters.MIMEType = mimeType
+            let query = GTLQueryDrive.queryForFilesCreateWithObject(metadata, uploadParameters: uploadParameters)
+            service.executeQuery(query, completionHandler: {(ticket: GTLServiceTicket!, updatedFile: AnyObject!, error: NSError!) -> Void in
+                if error == nil {
+                    print("File \(updatedFile)")
+                    if let file = updatedFile as? GTLDriveFile {
+                        self.file = file
+                        self.identifier = file.identifier
+                    } else {
+                        print("Can't recognize password.txt file")
+                    }
+                }
+                else {
+                    print("An error occurred: \(error!)")
+                }
+            })
+        }
+    }
+    
+    func readFromFile() -> String{
+        if file != nil {
+            var package: NSData?
+            service.fetcherService.fetcherWithURLString("https://www.googleapis.com/drive/v3/files/\(identifier!)?alt=media").beginFetchWithCompletionHandler({(data, error) in
+                if (error == nil) && (data != nil) {
+                    print("Retrieved file content");
+                    package = data!
+                } else {
+                    print("An error occurred: \(error!)")
+                }
+                
+            })
+            return String(data: package!, encoding: NSUTF8StringEncoding)!
+        } else {
+            return ""
+        }
+    }
     
     // Creates the auth controller for authorizing access to Drive API
     private func createAuthController() -> GTMOAuth2ViewControllerTouch {
