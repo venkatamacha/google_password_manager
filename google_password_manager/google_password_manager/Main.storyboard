@@ -76,15 +76,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DK9-OO-eeo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" canCancelContentTouches="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DK9-OO-eeo">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PasswordItemCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="PasswordItemCell" id="5Nb-Gv-myw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PasswordItemCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PasswordItemCell" id="5Nb-Gv-myw">
                                         <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Nb-Gv-myw" id="TUA-xz-gkh">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFk-We-QpF">
@@ -99,9 +99,6 @@
                                                 <constraint firstItem="MFk-We-QpF" firstAttribute="centerY" secondItem="TUA-xz-gkh" secondAttribute="centerY" id="t8D-Vx-LGn"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="xeS-Ph-yR6" kind="show" identifier="editPassword" id="7vG-lh-fLa"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -119,6 +116,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mgj-3A-tGr">
+                        <barButtonItem key="leftBarButtonItem" title="Sync" id="Tfz-8w-yoy">
+                            <connections>
+                                <action selector="pushData:" destination="s3x-xq-eNU" id="pBC-Ua-jKY"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add Password" id="RA2-Cg-IF6">
                             <connections>
                                 <segue destination="xeS-Ph-yR6" kind="show" identifier="addPassword" id="EDf-t2-gKA"/>
@@ -127,6 +129,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="DK9-OO-eeo" id="Ke1-64-twG"/>
+                        <segue destination="xeS-Ph-yR6" kind="show" identifier="editPassword" id="sgX-eu-0ic"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lru-Q9-cUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -157,6 +160,6 @@
         <image name="passwords" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EDf-t2-gKA"/>
+        <segue reference="sgX-eu-0ic"/>
     </inferredMetricsTieBreakers>
 </document>

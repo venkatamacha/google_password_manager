@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "google_password_manager/UserPassword.swift"
-            timestampString = "493427877.20034"
+            filePath = "google_password_manager/PasswordsViewController.swift"
+            timestampString = "493440560.158738"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "generatePasswordDictionary(_:)"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "displayResultWithTicket(_:finishedWithObject:error:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

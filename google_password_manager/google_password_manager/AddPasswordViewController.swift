@@ -60,15 +60,19 @@ class AddPasswordViewController: UIViewController, UITableViewDelegate, UITableV
         case 0:
             cell.label.text = "Service:"
             service = cell.textField
+            service?.text = previousPassword?.service
         case 1:
             cell.label.text = "Username:"
             user = cell.textField
+            user?.text = previousPassword?.user
         case 2:
             cell.label.text = "Password:"
             pass = cell.textField
+            pass?.text = previousPassword?.pass
         case 3:
             cell.label.text = "Notes:"
             notes = cell.textField
+            notes?.text = previousPassword?.notes
         default:
             break
         }
@@ -81,9 +85,10 @@ class AddPasswordViewController: UIViewController, UITableViewDelegate, UITableV
 
     @IBAction func save_action(sender: AnyObject) {
         if previousPassword != nil {
-            previousPassword!.deleteSelfFromFile(self.parentViewController as! PasswordsViewController)
+            previousPassword!.deleteSelfFromFile(delegate!)
         }
-        UserPassword.init(uuid: nil, service: (service!.text) ?? "Untitled", user: user!.text, pass: pass!.text, notes: notes!.text).insertSelfIntoFile(delegate!)
+        
+        UserPassword.init(uuid: nil, service: service!.text!, user: user!.text, pass: pass!.text, notes: notes!.text).insertSelfIntoFile(delegate!)
         self.navigationController!.popViewControllerAnimated(true)
     }
 

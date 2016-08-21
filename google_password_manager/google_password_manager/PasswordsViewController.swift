@@ -24,6 +24,8 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
     var file: GTLDriveFile?
     var identifier: String?
     
+    var fileText: String = ""
+    
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
     private let scopes = [kGTLAuthScopeDrive]
@@ -41,16 +43,10 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
             clientSecret: nil) {
             service.authorizer = auth
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        userPasswords = UserPassword.generatePasswordDictionary(self)
-        tableView.reloadData()
-    }
-    
-    // When the view appears, ensure that the Drive API service is authorized
-    // and perform API calls
-    override func viewDidAppear(animated: Bool) {
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         if firstTimeViewDidAppearWasCalled {
             presentViewController(
                 createAuthController(),
@@ -70,6 +66,11 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
                 completion: nil
             )
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.userPasswords = UserPassword.generatePasswordDictionary(self)
+        self.tableView.reloadData()
     }
     
     // Construct a query to get names and IDs of 10 files using the Google Drive API
@@ -100,76 +101,65 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
             filesString += "Files:\n"
             for file in files as! [GTLDriveFile] {
                 filesString += "\(file.name) (\(file.identifier))\n"
+                
+                if file.name == "password.txt" {
+                    self.file = file
+                    self.identifier = file.identifier
+                }
             }
         } else {
             filesString = "No files found."
         }
         
+        pullData()
     }
     
-    func writeIntoFile(text: String){
+    @IBAction func pushData(sender: AnyObject) {
+        let name = "password.txt"
+        let content = fileText
+        let mimeType = "text/plain"
+        let metadata = GTLDriveFile()
+        metadata.name = name
+        let data = content.dataUsingEncoding(NSUTF8StringEncoding)
+        let uploadParameters = GTLUploadParameters()
+        uploadParameters.data = data
+        uploadParameters.MIMEType = mimeType
+        
+        let query: GTLQueryDrive
         if file != nil {
-            let name = "password.txt"
-            let content = text
-            let mimeType = "text/plain"
-            let metadata = GTLDriveFile()
-            metadata.name = name
-            let data = content.dataUsingEncoding(NSUTF8StringEncoding)
-            let uploadParameters = GTLUploadParameters()
-            uploadParameters.data = data
-            uploadParameters.MIMEType = mimeType
-            let query = GTLQueryDrive.queryForFilesUpdateWithObject(file!, fileId: identifier!, uploadParameters: uploadParameters)
-            service.executeQuery(query, completionHandler: {(ticket: GTLServiceTicket!, updatedFile: AnyObject!, error: NSError!) -> Void in
-                if error == nil {
-                    print("File \(updatedFile)")
-                }
-                else {
-                    print("An error occurred: \(error!)")
-                }
-            })
+            query = GTLQueryDrive.queryForFilesUpdateWithObject(metadata, fileId: identifier!, uploadParameters: uploadParameters)
         } else {
-            let name = "password.txt"
-            let content = text
-            let mimeType = "text/plain"
-            let metadata = GTLDriveFile()
-            metadata.name = name
-            let data = content.dataUsingEncoding(NSUTF8StringEncoding)
-            let uploadParameters = GTLUploadParameters()
-            uploadParameters.data = data
-            uploadParameters.MIMEType = mimeType
-            let query = GTLQueryDrive.queryForFilesCreateWithObject(metadata, uploadParameters: uploadParameters)
-            service.executeQuery(query, completionHandler: {(ticket: GTLServiceTicket!, updatedFile: AnyObject!, error: NSError!) -> Void in
-                if error == nil {
-                    print("File \(updatedFile)")
-                    if let file = updatedFile as? GTLDriveFile {
-                        self.file = file
-                        self.identifier = file.identifier
-                    } else {
-                        print("Can't recognize password.txt file")
-                    }
-                }
-                else {
-                    print("An error occurred: \(error!)")
-                }
-            })
+            query = GTLQueryDrive.queryForFilesCreateWithObject(metadata, uploadParameters: uploadParameters)
         }
+        
+        service.executeQuery(query, completionHandler: {(ticket: GTLServiceTicket!, updatedFile: AnyObject!, error: NSError!) -> Void in
+            if error == nil {
+                print("File \(updatedFile)")
+                if let file = updatedFile as? GTLDriveFile {
+                    self.file = file
+                    self.identifier = file.identifier
+                } else {
+                    print("Can't recognize password.txt file")
+                }
+            }
+            else {
+                print("An error occurred: \(error!)")
+            }
+        })
     }
     
-    func readFromFile() -> String{
+    func pullData(){
         if file != nil {
-            var package: NSData?
             service.fetcherService.fetcherWithURLString("https://www.googleapis.com/drive/v3/files/\(identifier!)?alt=media").beginFetchWithCompletionHandler({(data, error) in
-                if (error == nil) && (data != nil) {
+                if (error == nil) {
                     print("Retrieved file content");
-                    package = data!
+                    self.fileText = String(data: data!, encoding: NSUTF8StringEncoding)!
+                    self.userPasswords = UserPassword.generatePasswordDictionary(self)
+                    self.tableView.reloadData()
                 } else {
                     print("An error occurred: \(error!)")
                 }
-                
             })
-            return String(data: package!, encoding: NSUTF8StringEncoding)!
-        } else {
-            return ""
         }
     }
     
