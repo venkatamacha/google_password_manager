@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pcw-cu-1Pl">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add Password View Controller-->
+        <scene sceneID="bJK-Bc-Au8">
+            <objects>
+                <viewController id="xeS-Ph-yR6" customClass="AddPasswordViewController" customModule="google_password_manager" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tnY-QB-VaK"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZRP-uQ-MbN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z4J-NW-a3J">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="qUS-eW-bfV">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="xeS-Ph-yR6" id="xas-lR-bA1"/>
+                                    <outlet property="delegate" destination="xeS-Ph-yR6" id="tcH-wz-wSn"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDv-6H-e5f">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Delete" id="lBX-vE-e4z">
+                                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="delete_action:" destination="xeS-Ph-yR6" id="twi-ls-p9Y"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tDv-6H-e5f" firstAttribute="top" secondItem="qUS-eW-bfV" secondAttribute="bottom" id="BJk-Or-dB0"/>
+                            <constraint firstAttribute="trailing" secondItem="qUS-eW-bfV" secondAttribute="trailing" id="LEz-Ml-Dh6"/>
+                            <constraint firstItem="qUS-eW-bfV" firstAttribute="leading" secondItem="Z4J-NW-a3J" secondAttribute="leading" id="RLx-dO-WGD"/>
+                            <constraint firstItem="qUS-eW-bfV" firstAttribute="trailing" secondItem="tDv-6H-e5f" secondAttribute="trailing" id="RwZ-aF-7k8"/>
+                            <constraint firstItem="tDv-6H-e5f" firstAttribute="bottom" secondItem="ZRP-uQ-MbN" secondAttribute="top" id="TKh-HG-Lmi"/>
+                            <constraint firstItem="qUS-eW-bfV" firstAttribute="top" secondItem="Z4J-NW-a3J" secondAttribute="top" id="oX5-5X-zne"/>
+                            <constraint firstItem="qUS-eW-bfV" firstAttribute="leading" secondItem="tDv-6H-e5f" secondAttribute="leading" id="zMZ-0c-gd7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="SSe-XZ-yqt">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="wMS-Rk-08J">
+                            <connections>
+                                <action selector="save_action:" destination="xeS-Ph-yR6" id="F0g-ca-lem"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="qUS-eW-bfV" id="Mrc-iC-aEO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N8D-bl-Fgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2349" y="-368"/>
+        </scene>
+        <!--Password-->
+        <scene sceneID="VeH-NE-3Hh">
+            <objects>
+                <viewController id="s3x-xq-eNU" userLabel="Password" customClass="PasswordsViewController" customModule="google_password_manager" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NZn-Ph-6xD"/>
+                        <viewControllerLayoutGuide type="bottom" id="umR-wa-QA7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W2M-sR-X0V">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" canCancelContentTouches="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DK9-OO-eeo">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="PasswordItemCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PasswordItemCell" id="5Nb-Gv-myw">
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Nb-Gv-myw" id="TUA-xz-gkh">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFk-We-QpF">
+                                                    <rect key="frame" x="45" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MFk-We-QpF" firstAttribute="leading" secondItem="TUA-xz-gkh" secondAttribute="leadingMargin" constant="37" id="J6j-hT-0R4"/>
+                                                <constraint firstItem="MFk-We-QpF" firstAttribute="centerY" secondItem="TUA-xz-gkh" secondAttribute="centerY" id="t8D-Vx-LGn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="xeS-Ph-yR6" kind="show" identifier="editPassword" id="7vG-lh-fLa"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="s3x-xq-eNU" id="WRv-3B-mz3"/>
+                                    <outlet property="delegate" destination="s3x-xq-eNU" id="crr-vY-oZ3"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DK9-OO-eeo" secondAttribute="trailing" id="Azi-lA-oqf"/>
+                            <constraint firstItem="DK9-OO-eeo" firstAttribute="leading" secondItem="W2M-sR-X0V" secondAttribute="leading" id="DCL-Sl-s87"/>
+                            <constraint firstItem="DK9-OO-eeo" firstAttribute="top" secondItem="W2M-sR-X0V" secondAttribute="top" id="TEF-Ph-qor"/>
+                            <constraint firstAttribute="bottom" secondItem="DK9-OO-eeo" secondAttribute="bottom" id="htO-7s-Wq7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Mgj-3A-tGr">
+                        <barButtonItem key="rightBarButtonItem" title="Add Password" id="RA2-Cg-IF6">
+                            <connections>
+                                <segue destination="xeS-Ph-yR6" kind="show" identifier="addPassword" id="EDf-t2-gKA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="DK9-OO-eeo" id="Ke1-64-twG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lru-Q9-cUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1548" y="-376"/>
+        </scene>
+        <!--Passwords-->
+        <scene sceneID="j6r-Yd-bsY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pcw-cu-1Pl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Passwords" image="passwords" id="Qbb-wc-suP"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p4p-c3-fJv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="s3x-xq-eNU" kind="relationship" relationship="rootViewController" id="ioo-eo-lyT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zc5-aN-yC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="740" y="-376"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="passwords" width="30" height="30"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="EDf-t2-gKA"/>
+    </inferredMetricsTieBreakers>
+</document>
