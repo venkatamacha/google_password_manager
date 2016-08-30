@@ -16,7 +16,7 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
     private let kClientID = "741471521408-8m4u1gj5m98o7qiefibvhtt15qsk2oj4.apps.googleusercontent.com"
     
     var firstTimeViewDidAppearWasCalled: Bool = true
-    var userPasswords: [String: [UserPassword]] = [:]
+    var userPasswords: [Character: [UserPassword]] = [:]
     
     var segueRow: Int?
     var segueSection: Int?
@@ -47,14 +47,14 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         
-        if firstTimeViewDidAppearWasCalled {
-            presentViewController(
-                createAuthController(),
-                animated: true,
-                completion: nil
-            )
-            firstTimeViewDidAppearWasCalled = false
-        }
+//        if firstTimeViewDidAppearWasCalled {
+//            presentViewController(
+//                createAuthController(),
+//                animated: true,
+//                completion: nil
+//            )
+//            firstTimeViewDidAppearWasCalled = false
+//        }
         
         if let authorizer = service.authorizer,
             canAuth = authorizer.canAuthorize where canAuth {
@@ -221,7 +221,11 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 1;
+        return 35;
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return String(Array(userPasswords.keys).sort{$0 < $1}[section])
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

@@ -29,15 +29,15 @@ class UserPassword: NSObject {
         }
         
         if user == "" {
-            user = "#"
+            user = "!@#$%^&*()"
         }
         
         if pass == "" {
-            pass = "#"
+            pass = "!@#$%^&*()"
         }
         
         if notes == "" {
-            notes = "#"
+            notes = "!@#$%^&*()"
         }
 
         return (uuid + "," +
@@ -59,15 +59,15 @@ class UserPassword: NSObject {
         vc.fileText = userPasswordTexts.joinWithSeparator(";")
     }
     
-    static func generatePasswordDictionary(vc: PasswordsViewController) -> [String: [UserPassword]]{
-        var passwordDictionary: [String: [UserPassword]] = [:]
+    static func generatePasswordDictionary(vc: PasswordsViewController) -> [Character: [UserPassword]]{
+        var passwordDictionary: [Character: [UserPassword]] = [:]
         
         let userPasswordTexts = vc.fileText.characters.split{$0 == ";"}.map(String.init)
         for text in userPasswordTexts {
-            let userPasswordFields = text.characters.split{$0 == ","}.map(String.init).map{(s1: String) -> String? in if s1 == "#" {return nil} else {return s1}}
+            let userPasswordFields = text.characters.split{$0 == ","}.map(String.init).map{(s1: String) -> String? in if s1 == "!@#$%^&*()" {return nil} else {return s1}}
             let userPassword = UserPassword.init(uuid: userPasswordFields[0]!, service: userPasswordFields[1]!, user: userPasswordFields[2], pass: userPasswordFields[3], notes: userPasswordFields[4])
             
-            let firstCharacter = Array(arrayLiteral: userPassword.service.capitalizedString)[0]
+            let firstCharacter = userPassword.service.uppercaseString[userPassword.service.startIndex]
             if passwordDictionary[firstCharacter] != nil {
                 passwordDictionary[firstCharacter]!.append(userPassword)
             } else {
