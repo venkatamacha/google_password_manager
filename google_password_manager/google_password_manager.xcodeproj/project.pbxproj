@@ -12,6 +12,8 @@
 		BE680B401D6936B600A7E5D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE680B3F1D6936B600A7E5D2 /* Main.storyboard */; };
 		BE87142B1D665847002D9F57 /* PasswordFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8714291D665847002D9F57 /* PasswordFieldCell.swift */; };
 		BE87142C1D665847002D9F57 /* PasswordFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE87142A1D665847002D9F57 /* PasswordFieldCell.xib */; };
+		BE8A3B531D765A6A00CE60FB /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE6D46D01D7658030056E1E8 /* CryptoSwift.framework */; };
+		BE8A3B541D765A6A00CE60FB /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE6D46D01D7658030056E1E8 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BE9CC3271D6105B1008A49EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9CC3261D6105B1008A49EF /* AppDelegate.swift */; };
 		BE9CC3291D6105B1008A49EF /* PasswordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9CC3281D6105B1008A49EF /* PasswordsViewController.swift */; };
 		BE9CC3301D6105B1008A49EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE9CC32F1D6105B1008A49EF /* Assets.xcassets */; };
@@ -24,6 +26,48 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BE6D46CF1D7658030056E1E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE6D46C71D7658030056E1E8 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = "CryptoSwift iOS";
+		};
+		BE6D46D11D7658030056E1E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE6D46C71D7658030056E1E8 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5596BDBB1BC8F220007E38D5;
+			remoteInfo = "CryptoSwift watchOS";
+		};
+		BE6D46D31D7658030056E1E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE6D46C71D7658030056E1E8 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75DF77721BC8EB59006E9520;
+			remoteInfo = "CryptoSwift OSX";
+		};
+		BE6D46D51D7658030056E1E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE6D46C71D7658030056E1E8 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 75D614BF1BD844F2001358B2;
+			remoteInfo = "CryptoSwift tvOS";
+		};
+		BE6D46D71D7658030056E1E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE6D46C71D7658030056E1E8 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = CryptoSwiftTests;
+		};
+		BE8A3B551D765A6A00CE60FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE6D46C71D7658030056E1E8 /* CryptoSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 754BE45419693E190098E6F3;
+			remoteInfo = "CryptoSwift iOS";
+		};
 		BE9CC33A1D6105B1008A49EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BE9CC31B1D6105B1008A49EF /* Project object */;
@@ -40,11 +84,26 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BE8A3B571D765A6B00CE60FB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BE8A3B541D765A6A00CE60FB /* CryptoSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		151C32B26077A190133CAB59 /* Pods-google_password_manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-google_password_manager.release.xcconfig"; path = "Pods/Target Support Files/Pods-google_password_manager/Pods-google_password_manager.release.xcconfig"; sourceTree = "<group>"; };
 		7B11F4CC9F134D9DD3C598D9 /* Pods-google_password_manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-google_password_manager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-google_password_manager/Pods-google_password_manager.debug.xcconfig"; sourceTree = "<group>"; };
 		BE262BC11D64083500E67A15 /* AddPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPasswordViewController.swift; sourceTree = "<group>"; };
 		BE680B3F1D6936B600A7E5D2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BE6D46C71D7658030056E1E8 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		BE8714291D665847002D9F57 /* PasswordFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordFieldCell.swift; sourceTree = "<group>"; };
 		BE87142A1D665847002D9F57 /* PasswordFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PasswordFieldCell.xib; sourceTree = "<group>"; };
 		BE9CC3231D6105B1008A49EF /* google_password_manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = google_password_manager.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A84D7D6592BF12D420358401 /* Pods_google_password_manager.framework in Frameworks */,
+				BE8A3B531D765A6A00CE60FB /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,9 +168,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		BE6D46C81D7658030056E1E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE6D46D01D7658030056E1E8 /* CryptoSwift.framework */,
+				BE6D46D21D7658030056E1E8 /* CryptoSwift.framework */,
+				BE6D46D41D7658030056E1E8 /* CryptoSwift.framework */,
+				BE6D46D61D7658030056E1E8 /* CryptoSwift.framework */,
+				BE6D46D81D7658030056E1E8 /* CryptoSwiftTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		BE9CC31A1D6105B1008A49EF = {
 			isa = PBXGroup;
 			children = (
+				BE6D46C71D7658030056E1E8 /* CryptoSwift.xcodeproj */,
 				BE9CC3561D610A2A008A49EF /* Podfile */,
 				BE9CC3581D610E38008A49EF /* GTMOAuth2ViewTouch.xib */,
 				BE9CC3251D6105B1008A49EF /* google_password_manager */,
@@ -180,10 +253,12 @@
 				BE9CC3211D6105B1008A49EF /* Resources */,
 				6D8C5D2E7386A2E6C0AE5A54 /* Embed Pods Frameworks */,
 				55069D4C8608D331CEC4DECC /* Copy Pods Resources */,
+				BE8A3B571D765A6B00CE60FB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BE8A3B561D765A6A00CE60FB /* PBXTargetDependency */,
 			);
 			name = google_password_manager;
 			productName = google_password_manager;
@@ -260,6 +335,12 @@
 			mainGroup = BE9CC31A1D6105B1008A49EF;
 			productRefGroup = BE9CC3241D6105B1008A49EF /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = BE6D46C81D7658030056E1E8 /* Products */;
+					ProjectRef = BE6D46C71D7658030056E1E8 /* CryptoSwift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				BE9CC3221D6105B1008A49EF /* google_password_manager */,
@@ -268,6 +349,44 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		BE6D46D01D7658030056E1E8 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = BE6D46CF1D7658030056E1E8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BE6D46D21D7658030056E1E8 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = BE6D46D11D7658030056E1E8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BE6D46D41D7658030056E1E8 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = BE6D46D31D7658030056E1E8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BE6D46D61D7658030056E1E8 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = BE6D46D51D7658030056E1E8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BE6D46D81D7658030056E1E8 /* CryptoSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CryptoSwiftTests.xctest;
+			remoteRef = BE6D46D71D7658030056E1E8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		BE9CC3211D6105B1008A49EF /* Resources */ = {
@@ -379,6 +498,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BE8A3B561D765A6A00CE60FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CryptoSwift iOS";
+			targetProxy = BE8A3B551D765A6A00CE60FB /* PBXContainerItemProxy */;
+		};
 		BE9CC33B1D6105B1008A49EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BE9CC3221D6105B1008A49EF /* google_password_manager */;
@@ -493,6 +617,7 @@
 			baseConfigurationReference = 7B11F4CC9F134D9DD3C598D9 /* Pods-google_password_manager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = google_password_manager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Venkata-Macha.google-password-manager";
@@ -505,6 +630,7 @@
 			baseConfigurationReference = 151C32B26077A190133CAB59 /* Pods-google_password_manager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = google_password_manager/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Venkata-Macha.google-password-manager";

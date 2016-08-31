@@ -9,11 +9,13 @@
 import GoogleAPIClient
 import GTMOAuth2
 import UIKit
+import CryptoSwift
 
 class PasswordsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     private let kKeychainItemName = "Drive API"
     private let kClientID = "741471521408-8m4u1gj5m98o7qiefibvhtt15qsk2oj4.apps.googleusercontent.com"
+    private let setup = try! AES(key: "thebirdistheword", iv: "0123456789012345")
     
     var firstTimeViewDidAppearWasCalled: Bool = true
     var userPasswords: [Character: [UserPassword]] = [:]
@@ -120,7 +122,7 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
         let mimeType = "text/plain"
         let metadata = GTLDriveFile()
         metadata.name = name
-        let data = content.dataUsingEncoding(NSUTF8StringEncoding)
+        let data = try! content.dataUsingEncoding(NSUTF8StringEncoding)?.encrypt(setup)
         let uploadParameters = GTLUploadParameters()
         uploadParameters.data = data
         uploadParameters.MIMEType = mimeType
@@ -153,7 +155,7 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
             service.fetcherService.fetcherWithURLString("https://www.googleapis.com/drive/v3/files/\(identifier!)?alt=media").beginFetchWithCompletionHandler({(data, error) in
                 if (error == nil) {
                     print("Retrieved file content");
-                    self.fileText = String(data: data!, encoding: NSUTF8StringEncoding)!
+                    self.fileText = String(data: try! data!.decrypt(self.setup), encoding: NSUTF8StringEncoding)!
                     self.userPasswords = UserPassword.generatePasswordDictionary(self)
                     self.tableView.reloadData()
                 } else {
