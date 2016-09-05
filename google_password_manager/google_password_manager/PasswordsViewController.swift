@@ -18,6 +18,7 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
     private let setup = try! AES(key: "thebirdistheword", iv: "0123456789012345")
     
     var firstTimeViewDidAppearWasCalled: Bool = true
+    var timesViewWillAppearWasCalled: Int = 0
     var userPasswords: [Character: [UserPassword]] = [:]
     
     var segueRow: Int?
@@ -57,22 +58,24 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
             )
             firstTimeViewDidAppearWasCalled = false
         }
-        
-        if let authorizer = service.authorizer,
-            canAuth = authorizer.canAuthorize where canAuth {
-            fetchFiles()
-        } else {
-            presentViewController(
-                createAuthController(),
-                animated: true,
-                completion: nil
-            )
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
+        if (timesViewWillAppearWasCalled == 1) {
+            if let authorizer = service.authorizer,
+                canAuth = authorizer.canAuthorize where canAuth {
+                fetchFiles()
+            } else {
+                presentViewController(
+                    createAuthController(),
+                    animated: true,
+                    completion: nil
+                )
+            }
+        }
         self.userPasswords = UserPassword.generatePasswordDictionary(self)
         self.tableView.reloadData()
+        timesViewWillAppearWasCalled += 1
     }
     
     // Construct a query to get names and IDs of 10 files using the Google Drive API
