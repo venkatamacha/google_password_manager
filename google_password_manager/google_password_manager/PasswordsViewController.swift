@@ -49,14 +49,14 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         
-//        if firstTimeViewDidAppearWasCalled {
-//            presentViewController(
-//                createAuthController(),
-//                animated: true,
-//                completion: nil
-//            )
-//            firstTimeViewDidAppearWasCalled = false
-//        }
+        if firstTimeViewDidAppearWasCalled {
+            presentViewController(
+                createAuthController(),
+                animated: true,
+                completion: nil
+            )
+            firstTimeViewDidAppearWasCalled = false
+        }
         
         if let authorizer = service.authorizer,
             canAuth = authorizer.canAuthorize where canAuth {
