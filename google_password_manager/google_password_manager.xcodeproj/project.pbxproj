@@ -22,6 +22,7 @@
 		BE9CC3491D6105B1008A49EF /* google_password_managerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9CC3481D6105B1008A49EF /* google_password_managerUITests.swift */; };
 		BE9CC3571D610A2A008A49EF /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = BE9CC3561D610A2A008A49EF /* Podfile */; };
 		BE9CC3591D610E38008A49EF /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE9CC3581D610E38008A49EF /* GTMOAuth2ViewTouch.xib */; };
+		BEE570D21D7E09F000782C8D /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE570D11D7E09F000782C8D /* Reachability.swift */; };
 		BEFE19481D612B1100F5AF56 /* UserPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFE19471D612B1100F5AF56 /* UserPassword.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		BE9CC34A1D6105B1008A49EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE9CC3561D610A2A008A49EF /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BE9CC3581D610E38008A49EF /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = Pods/GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
+		BEE570D11D7E09F000782C8D /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BEFE19471D612B1100F5AF56 /* UserPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPassword.swift; sourceTree = "<group>"; };
 		D059CDA1415659EBE6E57EA1 /* Pods_google_password_manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_google_password_manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -218,6 +220,7 @@
 				BE8714291D665847002D9F57 /* PasswordFieldCell.swift */,
 				BE680B3F1D6936B600A7E5D2 /* Main.storyboard */,
 				BE87142A1D665847002D9F57 /* PasswordFieldCell.xib */,
+				BEE570D11D7E09F000782C8D /* Reachability.swift */,
 			);
 			path = google_password_manager;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 			files = (
 				BE87142B1D665847002D9F57 /* PasswordFieldCell.swift in Sources */,
 				BE262BC21D64083500E67A15 /* AddPasswordViewController.swift in Sources */,
+				BEE570D21D7E09F000782C8D /* Reachability.swift in Sources */,
 				BE9CC3271D6105B1008A49EF /* AppDelegate.swift in Sources */,
 				BE9CC3291D6105B1008A49EF /* PasswordsViewController.swift in Sources */,
 				BEFE19481D612B1100F5AF56 /* UserPassword.swift in Sources */,

@@ -17,6 +17,7 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
     private let kClientID = "741471521408-8m4u1gj5m98o7qiefibvhtt15qsk2oj4.apps.googleusercontent.com"
     private let setup = try! AES(key: "thebirdistheword", iv: "0123456789012345")
     
+    var appMustFail: Bool = false
     var firstTimeViewDidAppearWasCalled: Bool = true
     var timesViewWillAppearWasCalled: Int = 0
     var userPasswords: [Character: [UserPassword]] = [:]
@@ -39,6 +40,7 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
     // and initialize the Drive API service
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.checkNetworkConnection()
         
         if let auth = GTMOAuth2ViewControllerTouch.authForGoogleFromKeychainForName(
             kKeychainItemName,
@@ -61,6 +63,7 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.checkNetworkConnection()
         if (timesViewWillAppearWasCalled == 1) {
             if let authorizer = service.authorizer,
                 canAuth = authorizer.canAuthorize where canAuth {
@@ -76,6 +79,15 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
         self.userPasswords = UserPassword.generatePasswordDictionary(self)
         self.tableView.reloadData()
         timesViewWillAppearWasCalled += 1
+    }
+    
+    func checkNetworkConnection() {
+        if (!(Reachability.isConnectedToNetwork()) || appMustFail){
+            appMustFail = true
+            let alert = UIAlertController(title: "No Internet Connection", message: "Check whether you are connected to the Internet and restart the app.", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: {(s: UIAlertAction) in self.checkNetworkConnection()}))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     // Construct a query to get names and IDs of 10 files using the Google Drive API
@@ -146,9 +158,18 @@ class PasswordsViewController: UIViewController, UITableViewDelegate, UITableVie
                 } else {
                     print("Can't recognize password.txt file")
                 }
+                
+                let alert = UIAlertController(title: "Sync Succeeded", message: "Encrypted password data is now stored on your Google Drive.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
             }
             else {
                 print("An error occurred: \(error!)")
+                
+                let alert = UIAlertController(title: "Sync Failed", message: "Check whether you are connected to the Internet and try again.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                
             }
         })
     }
